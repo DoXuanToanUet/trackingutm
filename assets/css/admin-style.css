@@ -1,0 +1,100 @@
+/* ====== STYLE DEMO ====== */
+.lst-container {
+    max-width: 1000px;
+    margin: 20px auto;
+    font-family: Arial, sans-serif;
+    color: #333;
+}
+.lst-header {
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+}
+.lst-header .icon {
+    font-size: 30px;
+    margin-right: 10px;
+}
+.lst-card {
+    background: #fff;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    padding: 20px;
+    margin-bottom: 20px;
+}
+.lst-card h2 {
+    margin-top: 0;
+    margin-bottom: 10px;
+}
+.lst-actions {
+    display: flex;
+    gap: 15px;
+    margin-bottom: 20px;
+}
+.lst-actions button,
+.lst-actions a {
+    background: #0073aa;
+    color: #fff;
+    padding: 8px 12px;
+    text-decoration: none;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+.lst-actions button:hover,
+.lst-actions a:hover {
+    background: #005c87;
+}
+.lst-stats {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    margin-bottom: 20px;
+}
+.lst-stats .stat-box {
+    flex: 1 1 250px;
+    background: #f9f9f9;
+    padding: 15px;
+    border-radius: 6px;
+    border: 1px solid #eee;
+    text-align: center;
+}
+.lst-stats .stat-box h4 {
+    margin: 0 0 10px 0;
+    font-size: 16px;
+}
+.lst-stats .stat-box p {
+    font-size: 20px;
+    margin: 0;
+    font-weight: bold;
+}
+.qr-section {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    margin-bottom: 20px;
+}
+.qr-box {
+    width: 150px;
+    height: 150px;
+    border: 2px dashed #aaa;
+    border-radius: 4px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #999;
+    font-weight: bold;
+}
+/* table style */
+table.lst-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+table.lst-table th,
+table.lst-table td {
+    border: 1px solid #ddd;
+    padding: 8px;
+}
+table.lst-table th {
+    background: #f0f0f0;
+}
