@@ -28,7 +28,14 @@ add_action('add_meta_boxes', array('ShortLinkController', 'add_meta_boxes'));
 add_action('save_post', array('ShortLinkController', 'save_post_meta'));
 add_action('init', array('ShortLinkController', 'add_rewrite_rules'));
 
-// Xử lý chuyển hướng và tracking (được gọi từ TrackingController)
+// Đăng ký query var nếu chưa có
+function lst_add_query_vars($vars) {
+    $vars[] = 'lst_short_link';
+    return $vars;
+}
+add_filter('query_vars', 'lst_add_query_vars');
+
+// Xử lý chuyển hướng và tracking
 function lst_template_redirect() {
     $slug = get_query_var('lst_short_link');
     if ($slug) {
@@ -46,9 +53,9 @@ function lst_template_redirect() {
             $clicks = (int)get_post_meta($post->ID, 'lst_click_count', true);
             update_post_meta($post->ID, 'lst_click_count', $clicks + 1);
             
-            // Lấy tham số UTM từ URL
+            // Lấy các tham số UTM từ URL, bao gồm utm_id
             $utm_params = array();
-            foreach (array('utm_source', 'utm_medium', 'utm_campaign', 'utm_term', 'utm_content') as $utm) {
+            foreach (array('utm_source', 'utm_medium', 'utm_campaign', 'utm_term', 'utm_content', 'utm_id') as $utm) {
                 if (isset($_GET[$utm])) {
                     $utm_params[$utm] = sanitize_text_field($_GET[$utm]);
                 }
@@ -66,6 +73,7 @@ function lst_template_redirect() {
                 'utm_campaign'  => isset($utm_params['utm_campaign']) ? $utm_params['utm_campaign'] : null,
                 'utm_term'      => isset($utm_params['utm_term']) ? $utm_params['utm_term'] : null,
                 'utm_content'   => isset($utm_params['utm_content']) ? $utm_params['utm_content'] : null,
+                'utm_id'        => isset($utm_params['utm_id']) ? $utm_params['utm_id'] : null,
                 'ip_address'    => $_SERVER['REMOTE_ADDR'],
             );
             TrackingData::insert($data);
